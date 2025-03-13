@@ -2,40 +2,26 @@
  * Seminar 2.1 Blockchain primitive
  */
 
-const SHA256 = require('ethereum-cryptography/sha256').sha256;
-const utf8ToBytes = require('ethereum-cryptography/utils').utf8ToBytes;
-
-
-class Block {
-    constructor(data){
-        this.data = data;      // Here we simplify data, let it be just a simple string
-        this.previousHash = null;
-    }
-
-    toHash(){
-        const hashBytes = utf8ToBytes(this.data + this.previousHash);
-        return SHA256(hashBytes);        // a hash as byte array
-    }
-}
-
+const { Block } = require('./Block');
 
 class Blockchain {
-    constructor() {
-        
-        this.chain = [
-             /* TODO 1: Create the genesis block here */ 
-            ];
-    }
+  constructor() {
 
-    addBlock(block){
-        // TODO 2 Compute block.previousHash = previousBlock.toHash()
-        this.chain.push(block)
-    }
+    this.chain = [
+      new Block('Hello, World!'),
+    ];
+  }
 
-    isValid(){
-        // TODO 3 Check every block previous hash
-        return true;
-    }
+  addBlock(block) {
+    block.setPreviousHash(this.chain[this.chain.length - 1].toHash());
+    this.chain.push(block);
+  }
+
+  isValid() {
+    return !this.chain.find((block, i, chain) =>
+      i > 0 ? block.getPreviousHash().toHex() !== chain[i - 1].toHash().toHex() : false
+    );
+  }
 }
 
-module.exports = { Block, Blockchain };
+module.exports = { Blockchain };

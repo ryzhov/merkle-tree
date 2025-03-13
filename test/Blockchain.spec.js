@@ -1,5 +1,5 @@
 const Blockchain = require('../Blockchain').Blockchain;
-const Block = require('../Blockchain').Block;
+const Block = require('../Block').Block;
 const assert = require('assert');
 const SHA256 = require('ethereum-cryptography/sha256').sha256;
 const utf8ToBytes = require('ethereum-cryptography/utils').utf8ToBytes;
@@ -19,7 +19,7 @@ describe('Blockchain', function() {
 
   describe('tampering with a previousHash', function() {
     beforeEach(() => {
-      blockchain.chain[1].previousHash = SHA256(utf8ToBytes("gibberish"));
+      blockchain.chain[1].setPreviousHash(SHA256(utf8ToBytes("gibberish")));
     });
 
     it('should not be considered valid', function() {
@@ -29,7 +29,7 @@ describe('Blockchain', function() {
   
   describe('tampering with data', function() {
     beforeEach(() => {
-      blockchain.chain[0].data = "Something Else";
+      blockchain.chain[0].data = utf8ToBytes("Something Else");
     });
 
     it('should not be considered valid', function() {

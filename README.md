@@ -45,7 +45,7 @@ npx mocha test
 Запуск теста:  
 
 ```sh
-npx mocha test/Blockchain.js
+npx mocha test/Blockchain.spec.js
 ``` 
 
 ## 2. Transaction output
