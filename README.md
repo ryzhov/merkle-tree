@@ -60,7 +60,7 @@ npx mocha test/Blockchain.spec.js
 Запуск теста:  
 
 ```sh
-npx mocha test/Transaction.js
+npx mocha test/Transaction.spec.js
 ``` 
 
 ## 3. Binary search tree 
