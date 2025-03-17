@@ -82,7 +82,7 @@ npx mocha test/Transaction.spec.js
 Запуск теста:  
 
 ```sh
-npx mocha test/Tree.js
+npx mocha test/Tree.spec.js
 ``` 
 
 
@@ -173,4 +173,3 @@ npx mocha test/MerkleTree.js
 ```sh
 npx mocha test/Trie.js
 ```  
-
