@@ -171,5 +171,5 @@ npx mocha test/MerkleTree.spec.js
 Запуск теста:  
 
 ```sh
-npx mocha test/Trie.js
+npx mocha test/Trie.spec.js
 ```  
