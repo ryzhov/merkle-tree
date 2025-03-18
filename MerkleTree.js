@@ -1,13 +1,10 @@
 /**
  * Seminar 2.4 Simple Merkle Tree
  */
-const {assert} = require('chai');
-
 
 function concatHashes(a, b) {
   return `Hash(${a} + ${b})`;
 }
-
 
 class MerkleTree {
   constructor(leaves) {
@@ -65,7 +62,6 @@ class MerkleTree {
     return this.getProof(Math.floor(index / 2), newLayer, proof);
   }
 }
-
 
 function verifyProof(proof, nodeHash, rootHash) {
   return rootHash === proof.reduce((acc, { hash, left }) =>
