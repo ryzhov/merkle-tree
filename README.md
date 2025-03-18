@@ -136,7 +136,7 @@ function concatHashes(a, b) {
 Запуск теста:  
 
 ```sh
-npx mocha test/MerkleTree.js
+npx mocha test/MerkleTree.spec.js
 ```  
 
 
